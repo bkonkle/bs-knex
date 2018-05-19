@@ -1,0 +1,78 @@
+{
+  "name": "bs-knex",
+  "version": "3.0.0",
+  "description": "BuckleScript interface to the node 'knex' library",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "prepush": "yarn build && yarn test",
+    "test": "cross-env NODE_ENV=test jest",
+    "test.watch": "cross-env NODE_ENV=test jest --watch",
+    "format.re": "refmt --in-place src/**/*.re",
+    "lint": "eslint --ext .js,.jsx ./",
+    "build": "bsb -make-world",
+    "build.watch": "yarn build -w",
+    "build.clean": "bsb -clean-world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecliptic/bucklescript-tools.git"
+  },
+  "keywords": [
+    "bucklescript",
+    "reason",
+    "node",
+    "database",
+    "sql",
+    "knex"
+  ],
+  "author": "Brandon Konkle <brandon@ecliptic.io> (http://ecliptic.io)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ecliptic/bucklescript-tools/issues"
+  },
+  "homepage": "https://github.com/ecliptic/bucklescript-tools#readme",
+  "dependencies": {
+    "bs-node-debug": "^0.2.0",
+    "knex": "^0.14.6"
+  },
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.2",
+    "bs-platform": "^3.0.0",
+    "cross-env": "^5.1.5",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-standard": "^3.1.0",
+    "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.4.4",
+    "lint-staged": "^7.1.1",
+    "sqlite3": "^4.0.0"
+  },
+  "jest": {
+    "testURL": "http://localhost",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom"
+    ],
+    "testMatch": [
+      "<rootDir>/tests/**/?(*)(Spec|Test).bs.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "src/**/*.re": [
+      "refmt --in-place",
+      "git add"
+    ]
+  }
+}
