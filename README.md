@@ -6,6 +6,24 @@
 
 BuckleScript utilities for working with the Node [knex](http://knexjs.org/) library.
 
+## Installation
+
+Install via Yarn or npm:
+
+```
+yarn add bs-knex
+```
+
+Add `bs-knex` to your `bs-dependencies` in `bsconfig.json`:
+
+```json
+{
+  "bs-dependencies": [
+    "bs-knex"
+  ]
+}
+```
+
 ## Getting Started
 
 To start working with Knex, first define a config:
