@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ecliptic/bucklescript-tools.git"
+    "url": "git+https://github.com/bkonkle/bs-knex.git"
   },
   "keywords": [
     "bucklescript",
@@ -29,9 +29,9 @@
   "author": "Brandon Konkle <brandon@ecliptic.io> (http://ecliptic.io)",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/ecliptic/bucklescript-tools/issues"
+    "url": "https://github.com/bkonkle/bs-knex/issues"
   },
-  "homepage": "https://github.com/ecliptic/bucklescript-tools#readme",
+  "homepage": "https://github.com/bkonkle/bs-knex#readme",
   "dependencies": {
     "bs-node-debug": "^0.2.0",
     "knex": "^0.14.6"
