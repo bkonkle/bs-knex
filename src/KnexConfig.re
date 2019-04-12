@@ -9,10 +9,11 @@ module Connection = {
     "domain": Js.Nullable.t(string),
     "instanceName": Js.Nullable.t(string),
     "debug": Js.Nullable.t(bool),
-    "requestTimeout": Js.Nullable.t(int)
+    "requestTimeout": Js.Nullable.t(int),
+    "ssl": Js.Nullable.t(bool),
   };
   [@bs.obj]
-  external make :
+  external make:
     (
       ~host: string=?,
       ~port: string=?,
@@ -24,6 +25,7 @@ module Connection = {
       ~debug: bool=?,
       ~requestTimeout: int=?,
       ~filename: string=?,
+      ~ssl: bool=?,
       unit
     ) =>
     t =
@@ -50,10 +52,10 @@ module Pool = {
     "autostart": Js.Nullable.t(bool),
     "evictionRunIntervalMillis": Js.Nullable.t(int),
     "numTestsPerRun": Js.Nullable.t(int),
-    "softIdleTimeoutMillis": Js.Nullable.t(int)
+    "softIdleTimeoutMillis": Js.Nullable.t(int),
   };
   [@bs.obj]
-  external make :
+  external make:
     (
       ~name: string=?,
       ~min: int=?,
@@ -85,10 +87,10 @@ module Migrations = {
     "directory": Js.Nullable.t(string),
     "extension": Js.Nullable.t(string),
     "tableName": Js.Nullable.t(string),
-    "disableTransactions": Js.Nullable.t(bool)
+    "disableTransactions": Js.Nullable.t(bool),
   };
   [@bs.obj]
-  external make :
+  external make:
     (
       ~database: string=?,
       ~directory: string=?,
@@ -108,12 +110,19 @@ module Db = {
     "user": Js.Nullable.t(string),
     "password": Js.Nullable.t(string),
     "host": Js.Nullable.t(string),
-    "hosts": Js.Nullable.t(array({. "host": string, "port": Js.Nullable.t(string)})),
+    "hosts":
+      Js.Nullable.t(
+        array({
+          .
+          "host": string,
+          "port": Js.Nullable.t(string),
+        }),
+      ),
     "port": Js.Nullable.t(string),
     "database": Js.Nullable.t(string),
     "filename": Js.Nullable.t(string),
     "native": Js.Nullable.t(bool),
-    "reconnect": Js.Nullable.t(bool)
+    "reconnect": Js.Nullable.t(bool),
   };
 };
 
@@ -131,11 +140,11 @@ type t = {
   "seeds": Js.Nullable.t(seeds),
   "acquireConnectionTimeout": Js.Nullable.t(int),
   "useNullAsDefault": Js.Nullable.t(bool),
-  "searchPath": Js.Nullable.t(string)
+  "searchPath": Js.Nullable.t(string),
 };
 
 [@bs.obj]
-external make :
+external make:
   (
     ~debug: string=?,
     ~client: string=?,
@@ -154,7 +163,7 @@ external make :
   "";
 
 [@bs.obj]
-external makeStringConnection :
+external makeStringConnection:
   (
     ~debug: string=?,
     ~client: string=?,
