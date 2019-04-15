@@ -1,8 +1,10 @@
-# bs-knex
+# [DEPRECATED] bs-knex
 
 [![version](https://img.shields.io/npm/v/bs-knex.svg)](http://npm.im/bs-knex)
 [![downloads](https://img.shields.io/npm/dt/bs-knex.svg)](http://npm.im/bs-knex)
 [![license](https://img.shields.io/npm/l/express.svg)](LICENSE)
+
+[DEPRECATED] - No longer being actively maintained
 
 BuckleScript utilities for working with the Node [knex](http://knexjs.org/) library.
 
