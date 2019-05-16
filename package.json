@@ -32,11 +32,14 @@
     "url": "https://github.com/ecliptic/bucklescript-tools/issues"
   },
   "homepage": "https://github.com/ecliptic/bucklescript-tools#readme",
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
     "bs-node-debug": "^0.2.0",
     "knex": "^0.14.6"
   },
   "devDependencies": {
+    "bs-node-debug": "^0.2.0",
+    "knex": "^0.14.6",
     "@glennsl/bs-jest": "^0.4.2",
     "bs-platform": "^5.0.4",
     "cross-env": "^5.1.5",
