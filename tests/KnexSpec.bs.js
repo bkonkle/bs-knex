@@ -13,23 +13,22 @@ var config = {
   connection: connection
 };
 
-describe("Knex", (function () {
-        describe("queryBuilder", (function () {
-                var knex = Knex$1(config);
-                Jest.test("returns the correct sql", (function () {
-                        var sql = Knex.fromTable("users", knex).where({
-                                id: "awesome"
-                              }).toSQL();
-                        return Jest.ExpectJs[/* toEqual */12]("select * from `users` where `id` = ?", Jest.ExpectJs[/* expect */0](sql.sql));
-                      }));
-                return Jest.test("returns the correct bindings", (function () {
+Jest.describe("Knex", (function (param) {
+        return Jest.describe("queryBuilder", (function (param) {
+                      var knex = Knex$1(config);
+                      Jest.test("returns the correct sql", (function (param) {
                               var sql = Knex.fromTable("users", knex).where({
                                       id: "awesome"
                                     }).toSQL();
-                              return Jest.ExpectJs[/* toEqual */12](/* array */["awesome"], Jest.ExpectJs[/* expect */0](sql.bindings));
+                              return Jest.ExpectJs[/* toEqual */12]("select * from `users` where `id` = ?", Jest.ExpectJs[/* expect */0](sql.sql));
                             }));
-              }));
-        return /* () */0;
+                      return Jest.test("returns the correct bindings", (function (param) {
+                                    var sql = Knex.fromTable("users", knex).where({
+                                            id: "awesome"
+                                          }).toSQL();
+                                    return Jest.ExpectJs[/* toEqual */12](/* array */["awesome"], Jest.ExpectJs[/* expect */0](sql.bindings));
+                                  }));
+                    }));
       }));
 
 exports.connection = connection;

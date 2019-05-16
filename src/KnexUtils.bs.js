@@ -2,13 +2,14 @@
 
 var Curry = require("bs-platform/lib/js/curry.js");
 var Debug = require("bs-node-debug/src/Debug.bs.js");
+var Js_dict = require("bs-platform/lib/js/js_dict.js");
 var Process = require("process");
 var Js_option = require("bs-platform/lib/js/js_option.js");
 var Caml_array = require("bs-platform/lib/js/caml_array.js");
-var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
 
 function getEnvVar(key, fallback) {
-  return Js_option.getWithDefault(fallback, Js_primitive.undefined_to_opt(Process.env[key]));
+  return Js_option.getWithDefault(fallback, Js_dict.get(Process.env, key));
 }
 
 var debug = Debug.make(getEnvVar("KNEX_DEBUG_PREFIX", "bs-knex"), "KnexUtils");
@@ -25,9 +26,9 @@ function objToJson(obj) {
                       return Js_option.some(JSON.parse(str));
                     }
                     catch (_exn){
-                      return /* None */0;
+                      return undefined;
                     }
-                  }), Js_primitive.undefined_to_opt(JSON.stringify(obj))));
+                  }), Caml_option.undefined_to_opt(JSON.stringify(obj))));
 }
 
 function catchUniqueError(name, handle, promise) {
@@ -49,7 +50,7 @@ function catchUniqueError(name, handle, promise) {
 
 function handleUniqueError(name, message) {
   return (function (param) {
-      return catchUniqueError(name, (function () {
+      return catchUniqueError(name, (function (_exn) {
                     return Promise.reject(new Error(message));
                   }), param);
     });
